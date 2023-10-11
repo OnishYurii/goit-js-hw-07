@@ -26,12 +26,12 @@ function openModal(event) {
   event.preventDefault();
   let imageRef;
 
-  if (event.target.nodeName === "IMG") {
-    imageRef = event.target.dataset.source;
-  } else {
+  if (event.target.nodeName !== "IMG") {
     return;
   }
-  console.log(imageRef);
+
+  imageRef = event.target.dataset.source;
+  // console.log(imageRef);
 
   fullSizeImg = basicLightbox.create(
     `
