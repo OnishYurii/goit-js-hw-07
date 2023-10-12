@@ -4,6 +4,8 @@ import { galleryItems } from "./gallery-items.js";
 console.log(galleryItems);
 
 const gallery = document.querySelector(".gallery");
+let fullSizeImg;
+let imageRef;
 
 const markup = galleryItems
   .map(
@@ -20,11 +22,8 @@ gallery.insertAdjacentHTML("afterbegin", markup);
 
 gallery.addEventListener("click", openModal);
 
-let fullSizeImg;
-
 function openModal(event) {
   event.preventDefault();
-  let imageRef;
 
   if (event.target.nodeName !== "IMG") {
     return;
@@ -32,7 +31,10 @@ function openModal(event) {
 
   imageRef = event.target.dataset.source;
   // console.log(imageRef);
+  lightboxInit();
+}
 
+function lightboxInit() {
   fullSizeImg = basicLightbox.create(
     `
     <img src=${imageRef} />`,
